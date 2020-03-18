@@ -4,4 +4,4 @@ export const fetchPhonesAPI = async() => {
   return new Promise((resolve, reject) => {
     resolve(phones);
   })
-}
+};

@@ -6,6 +6,7 @@ class Phones extends Component {
 
   componentDidMount() {
     const { fetchPhones } = this.props;
+    fetchPhones()
   }
 
   render() {
