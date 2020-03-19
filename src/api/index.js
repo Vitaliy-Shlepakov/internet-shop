@@ -5,3 +5,9 @@ export const fetchPhonesAPI = async() => {
     resolve(phones);
   })
 };
+
+export const loadMorePhonesAPI = async({offset}) => {
+  return new Promise((resolve, reject) => {
+    resolve(phones);
+  })
+};
