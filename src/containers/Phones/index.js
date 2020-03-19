@@ -3,6 +3,7 @@ import connect from "react-redux/es/connect/connect";
 import { fetchPhones, loadMorePhones } from '../../actions/index';
 import * as R from 'ramda';
 import {Link} from "react-router-dom";
+import Layout from "../Layout";
 
 const getPhones = state => {
   const phones = R.map(id => getPhoneById(state, id), state.phonesPage.ids);
@@ -54,7 +55,7 @@ class Phones extends Component {
     const { phones, loadMorePhones } = this.props;
 
     return (
-      <>
+      <Layout>
         <div className="books row">
           {
             phones.map((phone, index) => this.renderPhone(phone, index))
@@ -68,7 +69,7 @@ class Phones extends Component {
             >Load More</button>
           </div>
         </div>
-      </>
+      </Layout>
     );
   }
 };

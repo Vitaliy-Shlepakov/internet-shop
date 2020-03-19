@@ -1,4 +1,4 @@
-import {FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_SUCCESS} from "../actionTypes";
+import {FETCH_PHONE_BY_ID_SUCCESS, FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_SUCCESS} from "../actionTypes";
 import * as R from 'ramda';
 
 const initialState = {};
@@ -20,6 +20,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ... newValue
+      };
+
+    case FETCH_PHONE_BY_ID_SUCCESS:
+      return {
+        ... state,
+        ...{[action.payload.id]: action.payload}
       };
 
     default:

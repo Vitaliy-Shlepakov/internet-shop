@@ -1,4 +1,6 @@
 import {
+  FETCH_PHONE_BY_ID_FAIL,
+  FETCH_PHONE_BY_ID_START, FETCH_PHONE_BY_ID_SUCCESS,
   FETCH_PHONES_FAIL,
   FETCH_PHONES_START,
   FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_FAIL,
@@ -6,7 +8,7 @@ import {
   LOAD_MORE_PHONES_SUCCESS
 } from "../actionTypes";
 
-import {fetchPhonesAPI, loadMorePhonesAPI} from '../api/index';
+import {fetchPhonesAPI, loadMorePhonesAPI, fetchPhoneByIdAPI} from '../api/index';
 import * as R from "ramda";
 
 
@@ -56,4 +58,26 @@ export const loadMorePhones = ( ) => {
     }
   }
 };
+
+export const fetchPoneById = (id) => {
+  return async (dispatch) => {
+    dispatch({
+      type: FETCH_PHONE_BY_ID_START
+    });
+
+    try{
+      const response = await fetchPhoneByIdAPI(id);
+      dispatch({
+        type: FETCH_PHONE_BY_ID_SUCCESS,
+        payload: response
+      })
+    }catch(e){
+      dispatch({
+        type: FETCH_PHONE_BY_ID_FAIL,
+        payload: e,
+        error: true
+      })
+    }
+  };
+}
 
