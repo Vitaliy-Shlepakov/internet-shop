@@ -10,7 +10,7 @@ const getPhones = state => {
   return phones;
 };
 
-const getPhoneById = (state, id) => {
+export const getPhoneById = (state, id) => {
   return R.prop(id, state.phones)
 };
 
