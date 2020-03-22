@@ -1,4 +1,5 @@
 import {
+  ADD_PHONE_TO_BASKET,
   FETCH_PHONE_BY_ID_FAIL,
   FETCH_PHONE_BY_ID_START, FETCH_PHONE_BY_ID_SUCCESS,
   FETCH_PHONES_FAIL,
@@ -79,5 +80,14 @@ export const fetchPoneById = (id) => {
       })
     }
   };
-}
+};
+
+export const addPhoneToBasket = id => {
+  return dispatch => {
+    dispatch({
+      type: ADD_PHONE_TO_BASKET,
+      payload: id,
+    });
+  }
+};
 

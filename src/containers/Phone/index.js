@@ -28,7 +28,7 @@ class Phone extends Component {
                 'memory'
             ])
         )(phone);
-        
+
         return columnField.map(([key, value]) => (
             <div className="column" key={key}>
                 <div className="ab-details-title">

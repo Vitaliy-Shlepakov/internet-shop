@@ -3,12 +3,14 @@ import phoneReducer from './phones';
 import { connectRouter } from 'connected-react-router';
 import phonesPage from './phonesPage';
 import phonePage from "./phonePage";
+import basketReducer from './basket';
 
 export default function createRootReducer(history) {
   return combineReducers({
     phones: phoneReducer,
     phonesPage,
     phonePage,
+    basket: basketReducer,
     router: connectRouter(history)
   })
 }
