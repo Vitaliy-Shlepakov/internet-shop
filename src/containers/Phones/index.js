@@ -6,7 +6,18 @@ import {Link} from "react-router-dom";
 import Layout from "../Layout";
 
 const getPhones = state => {
-  const phones = R.map(id => getPhoneById(state, id), state.phonesPage.ids);
+
+  const applySearch = item => R.contains(
+    state.phonesPage.search,
+    R.prop('name', item)
+  );
+
+  const phones = R.compose(
+    R.filter(applySearch),
+    R.map(id => getPhoneById(state, id))
+  )(state.phonesPage.ids);
+
+  console.log(phones, 'PHONES');
   return phones;
 };
 

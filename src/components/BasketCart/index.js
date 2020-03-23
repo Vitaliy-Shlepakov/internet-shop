@@ -26,7 +26,7 @@ const BasketCart = ({totalBasketCount, totalPrice}) => {
         <Link
           to="/basket"
           id="dLabel"
-          className="btn btn-inverse btn-blick btn-lg"
+          className="btn btn-inverse btn-block btn-lg"
         >
           <i className="fa fa-fa-shoping-cart"></i>
           <span>{ totalBasketCount } item(s) - ${totalPrice}</span>

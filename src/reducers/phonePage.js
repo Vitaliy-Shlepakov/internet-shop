@@ -1,9 +1,10 @@
 import * as R from 'ramda';
-import {FETCH_PHONE_BY_ID_FAIL, FETCH_PHONE_BY_ID_SUCCESS} from "../actionTypes";
+import {FETCH_PHONE_BY_ID_SUCCESS, SEARCH_PHONE} from "../actionTypes";
 
 
 const initialState = {
-  id: null
+  id: null,
+  search: ''
 };
 
 export default (state=initialState, action) => {
@@ -14,6 +15,12 @@ export default (state=initialState, action) => {
       return {
         ...state,
         id: action.payload.id
+      };
+
+    case SEARCH_PHONE:
+      return {
+        ...state,
+        search: action.payload
       };
 
     default:

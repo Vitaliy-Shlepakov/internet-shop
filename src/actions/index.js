@@ -6,7 +6,7 @@ import {
   FETCH_PHONES_START,
   FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_FAIL,
   LOAD_MORE_PHONES_START,
-  LOAD_MORE_PHONES_SUCCESS
+  LOAD_MORE_PHONES_SUCCESS, SEARCH_PHONE
 } from "../actionTypes";
 
 import {fetchPhonesAPI, loadMorePhonesAPI, fetchPhoneByIdAPI} from '../api/index';
@@ -89,5 +89,12 @@ export const addPhoneToBasket = id => {
       payload: id,
     });
   }
+};
+
+export const searchPhone = text => dispatch => {
+  dispatch({
+    type: SEARCH_PHONE,
+    payload: text
+  });
 };
 
