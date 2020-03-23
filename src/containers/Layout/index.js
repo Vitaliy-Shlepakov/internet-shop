@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from "../../components/Sidebar";
 
 const Layout = ({children}) => {
   return (
@@ -6,7 +7,7 @@ const Layout = ({children}) => {
       <div className="container">
         <div className="row">
           <div className="col-md-3">
-            sidebar
+            <Sidebar/>
           </div>
           <div className="col-md-9">
             {children}
