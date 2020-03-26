@@ -1,8 +1,9 @@
-import {FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_SUCCESS} from "../actionTypes";
+import {FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_SUCCESS, SEARCH_PHONE} from "../actionTypes";
 import * as R from 'ramda';
 
 const initialState = {
-  ids: []
+  ids: [],
+  search: ''
 };
 
 
@@ -20,10 +21,15 @@ export default (state = initialState, action) => {
 
     case LOAD_MORE_PHONES_SUCCESS:
       const newIds = R.pluck('id', action.payload);
-
       return {
         ...state,
         ids: R.concat(state.ids, newIds)
+      };
+
+    case SEARCH_PHONE:
+      return {
+        ...state,
+        search: action.payload
       };
 
     default:

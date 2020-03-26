@@ -8,10 +8,11 @@ class Search extends Component {
     value: ''
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { value } = this.state;
-    this.props.searchPhone(value);
+    const { searchPhone } = this.props;
+    searchPhone(value);
   };
 
   handleChange = target => {

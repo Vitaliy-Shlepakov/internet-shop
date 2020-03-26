@@ -17,7 +17,6 @@ const getPhones = state => {
     R.map(id => getPhoneById(state, id))
   )(state.phonesPage.ids);
 
-  console.log(phones, 'PHONES');
   return phones;
 };
 
