@@ -9,16 +9,24 @@ import {
 import * as R from 'ramda';
 import {Link} from "react-router-dom";
 import Layout from "../Layout";
+import {getActiveCategoryId} from "../../components/Categories";
 
-const getPhones = state => {
+const getPhones = (state, ownProps) => {
+  
+  const activeCategoryId = getActiveCategoryId(ownProps);
 
   const applySearch = item => R.contains(
     state.phonesPage.search,
     R.prop('name', item)
   );
+  const applyCategory = item => R.equals(
+    activeCategoryId,
+    R.prop('categoryId', item)
+  );
 
   const phones = R.compose(
     R.filter(applySearch),
+    R.when(R.always(activeCategoryId), R.filter(applyCategory)),
     R.map(id => getPhoneById(state, id))
   )(state.phonesPage.ids);
 
@@ -101,9 +109,9 @@ const mapDispatchToProps = {
   fetchCategories
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    phones: getPhones(state)
+    phones: getPhones(state, ownProps)
   }
 }
 
