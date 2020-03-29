@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { fetchPoneById, addPhoneToBasket } from "../../actions";
+import {
+  fetchPoneById,
+  addPhoneToBasket,
+  } from "../../actions";
 import { getPhoneById } from '../Phones';
 import * as R from 'ramda';
 import BasketCart from '../../components/BasketCart';
@@ -10,7 +13,7 @@ class Phone extends Component {
 
   componentDidMount() {
     const {fetchPoneById, match} = this.props;
-    fetchPoneById(match.params.id)
+    fetchPoneById(match.params.id);
   };
 
   renderFields = () => {
@@ -117,7 +120,6 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => {
-
   return {
     phone: getPhoneById(state, state.phonePage.id)
   }

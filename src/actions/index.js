@@ -1,16 +1,23 @@
 import {
   ADD_PHONE_TO_BASKET,
+  FETCH_CATEGORIES_FAIL,
+  FETCH_CATEGORIES_START,
+  FETCH_CATEGORIES_SUCCESS,
   FETCH_PHONE_BY_ID_FAIL,
-  FETCH_PHONE_BY_ID_START, FETCH_PHONE_BY_ID_SUCCESS,
+  FETCH_PHONE_BY_ID_START,
+  FETCH_PHONE_BY_ID_SUCCESS,
   FETCH_PHONES_FAIL,
   FETCH_PHONES_START,
-  FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_FAIL,
+  FETCH_PHONES_SUCCESS,
+  LOAD_MORE_PHONES_FAIL,
   LOAD_MORE_PHONES_START,
-  LOAD_MORE_PHONES_SUCCESS, SEARCH_PHONE
+  LOAD_MORE_PHONES_SUCCESS,
+  SEARCH_PHONE
 } from "../actionTypes";
 
 import {fetchPhonesAPI, loadMorePhonesAPI, fetchPhoneByIdAPI} from '../api/index';
 import * as R from "ramda";
+import {fetchCategoriesAPI} from "../api";
 
 
 const getRenderPhonesLenght = state => R.length(state.phonesPage.ids);
@@ -96,5 +103,25 @@ export const searchPhone = text => dispatch => {
     type: SEARCH_PHONE,
     payload: text
   });
+};
+
+export const fetchCategories = () => {
+  return async (dispatch) => {
+    dispatch({ type: FETCH_CATEGORIES_START});
+
+    try{
+      const categories = await fetchCategoriesAPI();
+      dispatch({
+        type: FETCH_CATEGORIES_SUCCESS,
+        payload: categories
+      })
+    }catch(err){
+      dispatch({
+        type: FETCH_CATEGORIES_FAIL,
+        payload: err,
+        error: true
+      })
+    }
+  }
 };
 

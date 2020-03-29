@@ -1,10 +1,17 @@
 import phones from './mockPhones';
+import categories from './mockCategories';
 import * as R from 'ramda';
 
 export const fetchPhonesAPI = async() => {
   return new Promise((resolve, reject) => {
     resolve(phones);
-  })
+  });
+};
+
+export const fetchCategoriesAPI = async() => {
+  return new Promise((resolve, reject) => {
+    resolve(categories);
+  });
 };
 
 export const loadMorePhonesAPI = async({offset}) => {
