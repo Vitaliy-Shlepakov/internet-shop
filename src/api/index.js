@@ -1,8 +1,11 @@
 import phones from './mockPhones';
 import categories from './mockCategories';
 import * as R from 'ramda';
+import axios from 'axios';
 
 export const fetchPhonesAPI = async() => {
+  // const response = await axios.get('http://wwww.mocky.io/v2/5918bc6b120000701040dbec');
+  // return response.data.phones
   return new Promise((resolve, reject) => {
     resolve(phones);
   });
