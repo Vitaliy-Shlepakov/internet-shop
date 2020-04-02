@@ -12,7 +12,7 @@ import Layout from "../Layout";
 import {getActiveCategoryId} from "../../components/Categories";
 
 const getPhones = (state, ownProps) => {
-  
+
   const activeCategoryId = getActiveCategoryId(ownProps);
 
   const applySearch = item => R.contains(
